@@ -129,7 +129,8 @@ Cost awareness is a core design consideration.
 
 - AWS region restricted to `us-east-2` in the initial IAM policy.
 - No NAT Gateway or unnecessary compute resources in the initial network foundation.
-- AWS budget notifications configured.
+- AWS monthly budget configured at $10, with actual and forecasted spending notifications.
+- Budget notifications provide alerts only; they do not automatically stop AWS spending.
 - Infrastructure changes reviewed before deployment.
 - Terraform state and saved plans excluded from Git.
 
