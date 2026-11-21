@@ -1,18 +1,18 @@
 resource "aws_vpc" "lab_vpc" {
-  cidr_block           = "10.0.0.0/16"
+  cidr_block           = var.vpc_cidr
   enable_dns_support   = true
   enable_dns_hostnames = true
 
   tags = {
     Name        = "Personal-DevOps-Lab-VPC"
-    Environment = "Lab"
+    Environment = var.environment
     ManagedBy   = "Terraform"
   }
 }
 resource "aws_subnet" "public_subnet" {
   vpc_id                  = aws_vpc.lab_vpc.id
-  cidr_block              = "10.0.1.0/24"
-  availability_zone       = "us-east-2a"
+  cidr_block              = var.public_subnet_cidr
+  availability_zone       = var.availability_zone
   map_public_ip_on_launch = true
 
   tags = {
@@ -23,12 +23,12 @@ resource "aws_subnet" "public_subnet" {
 }
 resource "aws_subnet" "private_subnet" {
   vpc_id            = aws_vpc.lab_vpc.id
-  cidr_block        = "10.0.2.0/24"
-  availability_zone = "us-east-2a"
+  cidr_block        = var.private_subnet_cidr
+  availability_zone = var.availability_zone
 
   tags = {
     Name        = "Personal-DevOps-Lab-Private-Subnet"
-    Environment = "Lab"
+    Environment = var.environment
     ManagedBy   = "Terraform"
   }
 }
@@ -37,7 +37,7 @@ resource "aws_internet_gateway" "lab_igw" {
 
   tags = {
     Name        = "Personal-DevOps-Lab-IGW"
-    Environment = "Lab"
+    Environment = var.environment
     ManagedBy   = "Terraform"
   }
 }
@@ -51,7 +51,7 @@ resource "aws_route_table" "public_route_table" {
 
   tags = {
     Name        = "Personal-DevOps-Lab-Public-RT"
-    Environment = "Lab"
+    Environment = var.environment
     ManagedBy   = "Terraform"
   }
 }
@@ -66,7 +66,7 @@ resource "aws_security_group" "lab_security_group" {
 
   tags = {
     Name        = "Personal-DevOps-Lab-SG"
-    Environment = "Lab"
+    Environment = var.environment
     ManagedBy   = "Terraform"
   }
 }
