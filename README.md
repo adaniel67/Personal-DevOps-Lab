@@ -138,6 +138,7 @@ Cost awareness is a core design consideration.
 
 Future phases will expand the lab incrementally:
 
+- [ ] Review and harden IAM permissions, security groups, and network access controls.
 - [ ] Deploy and verify the initial AWS network foundation.
 - [ ] Add compute infrastructure using EC2.
 - [ ] Introduce remote Terraform state management.
