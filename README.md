@@ -107,6 +107,7 @@ Personal-DevOps-Lab/
 └── terraform/
     ├── .terraform.lock.hcl
     ├── main.tf
+    ├── outputs.tf
     └── versions.tf
 ```
 
