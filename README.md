@@ -118,10 +118,10 @@ The project follows a standard Terraform workflow:
 1. `terraform init` — Initialize the working directory and download providers.
 2. `terraform fmt` — Format Terraform configuration files.
 3. `terraform validate` — Check configuration syntax and consistency.
-4. `terraform plan` — Preview proposed infrastructure changes.
-5. `terraform apply` — Deploy infrastructure after reviewing and approving the plan.
+4. `terraform plan` — Preview proposed infrastructure changes before deployment.
+5. `terraform apply` — Deploy infrastructure only after reviewing the complete plan and explicitly approving deployment.
 
-Infrastructure deployment is intentionally controlled to minimize unexpected AWS costs.
+Infrastructure deployment is intentionally controlled to minimize unexpected AWS costs. No resources will be deployed without prior cost review and approval.
 
 ## Cost Management
 
