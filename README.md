@@ -37,6 +37,33 @@ The project is being developed incrementally, with an emphasis on repeatability,
 
 ## AWS Infrastructure Design
 
+### Network Architecture
+
+```mermaid
+flowchart TB
+    Internet((Internet))
+
+    subgraph VPC["AWS VPC - 10.0.0.0/16"]
+        IGW["Internet Gateway"]
+
+        subgraph Public["Public Subnet - 10.0.1.0/24"]
+            PublicRT["Public Route Table<br/>0.0.0.0/0 → IGW"]
+        end
+
+        subgraph Private["Private Subnet - 10.0.2.0/24"]
+            PrivateRT["Main Route Table<br/>Local VPC routing only"]
+        end
+
+        SG["Security Group<br/>No inbound or outbound rules"]
+    end
+
+    Internet <--> IGW
+    IGW --- PublicRT
+    PublicRT --- Public
+    PrivateRT --- Private
+```
+
+
 The initial infrastructure foundation defines the following AWS resources in the `us-east-2` (Ohio) region.
 
 | Resource | Terraform Resource | Purpose |
