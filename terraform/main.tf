@@ -76,6 +76,12 @@ resource "aws_security_group" "lab_security_group" {
   name        = "Personal-DevOps-Lab-SG"
   description = "Security group for the DevOps lab"
   vpc_id      = aws_vpc.lab_vpc.id
+  egress {
+    from_port   = 443
+    to_port     = 443
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
   tags = {
     Name        = "Personal-DevOps-Lab-SG"

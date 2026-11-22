@@ -18,3 +18,8 @@ output "security_group_id" {
   description = "The ID of the lab security group"
   value       = aws_security_group.lab_security_group.id
 }
+
+output "ec2_instance_id" {
+  description = "The ID of the lab EC2 instance"
+  value       = aws_instance.lab_ec2.id
+}
