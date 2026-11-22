@@ -17,7 +17,7 @@ resource "aws_subnet" "public_subnet" {
 
   tags = {
     Name        = "Personal-DevOps-Lab-Public-Subnet"
-    Environment = "Lab"
+    Environment = var.environment
     ManagedBy   = "Terraform"
   }
 }
