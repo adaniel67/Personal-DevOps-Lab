@@ -191,3 +191,12 @@ To connect:
 A browser-based terminal opens when the connection succeeds.
 
 The instance must be running, and its Systems Manager status must be Online.
+
+### Starting and Stopping the EC2 Instance with AWS CLI
+
+The EC2 instance can be managed from PowerShell using the AWS CLI.
+
+**Start the instance:**
+
+```powershell
+aws ec2 start-instances --instance-ids i-01dfe8c2aafde46d4
