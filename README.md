@@ -154,3 +154,22 @@ Future phases will expand the lab incrementally:
 **adaniel67**
 
 GitHub: [github.com/adaniel67](https://github.com/adaniel67)
+
+## Deployed Infrastructure
+
+The Terraform configuration provisions the following AWS resources in `us-east-2`:
+
+- **VPC:** `10.0.0.0/16`
+- **Public subnet:** `10.0.1.0/24`
+- **Private subnet:** `10.0.2.0/24`
+- **Internet Gateway** and public route table
+- **Private route table** for the private subnet
+- **Security group:** No inbound rules; outbound HTTPS (TCP 443) only
+- **EC2 instance:** Amazon Linux 2023, `t3.micro`, with an 8 GB gp3 root volume
+- **IAM role and instance profile:** Attached to EC2 for Systems Manager access
+
+### Instance Management
+
+The EC2 instance is managed through AWS Systems Manager Session Manager. SSH access and inbound port 22 are not required.
+
+The instance can be stopped when not in use and started again when needed. Terraform lifecycle configuration ignores changes to the automatically assigned public IP address so that stopping the instance does not trigger an unnecessary replacement.
