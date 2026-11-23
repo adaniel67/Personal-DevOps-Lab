@@ -173,3 +173,21 @@ The Terraform configuration provisions the following AWS resources in `us-east-2
 The EC2 instance is managed through AWS Systems Manager Session Manager. SSH access and inbound port 22 are not required.
 
 The instance can be stopped when not in use and started again when needed. Terraform lifecycle configuration ignores changes to the automatically assigned public IP address so that stopping the instance does not trigger an unnecessary replacement.
+
+### Connecting to the EC2 Instance
+
+The instance is accessed through AWS Systems Manager Session Manager. No SSH key or inbound SSH rule is required.
+
+To connect:
+
+1. Sign in to the AWS Management Console.
+2. Set the AWS Region to **US East (Ohio) – `us-east-2`**.
+3. Open **EC2 → Instances**.
+4. Select `Personal-DevOps-Lab-EC2`.
+5. Choose **Connect**.
+6. Open the **Session Manager** tab.
+7. Select **Connect**.
+
+A browser-based terminal opens when the connection succeeds.
+
+The instance must be running, and its Systems Manager status must be Online.
