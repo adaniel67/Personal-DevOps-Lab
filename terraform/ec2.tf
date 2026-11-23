@@ -36,4 +36,7 @@ resource "aws_instance" "lab_ec2" {
     Name        = "Personal-DevOps-Lab-EC2"
     Environment = var.environment
   }
+    lifecycle {
+    ignore_changes = [associate_public_ip_address]
+  }
 }
