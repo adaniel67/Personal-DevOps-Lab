@@ -9,6 +9,15 @@ The Personal DevOps Lab is a practical learning and portfolio project designed t
 
 The project is being developed incrementally, with an emphasis on repeatability, security, cost awareness, and sound engineering practices.
 
+## Project Highlights
+
+- Infrastructure as Code using Terraform
+- AWS VPC networking, subnets, and EC2
+- IAM roles and Systems Manager Session Manager (no SSH)
+- AWS CLI instance management using PowerShell
+- GitHub Actions CI automation
+- Automated Terraform formatting and validation
+
 ## Current Status
 
 **Phase 1: AWS Infrastructure Foundation — Complete**
