@@ -69,19 +69,36 @@ No security or IAM changes should be made without reviewing their impact first.
 
 ## Phase 4 — Private Networking
 
-**Status: Configuration reported; final verification outstanding.**
+**Status: Completed and verified November 26, 2026.**
 
 - [x] Public networking foundation deployed.
-- [ ] Verify private subnet configuration in the saved Terraform files.
-- [ ] Verify private route table configuration.
-- [ ] Verify private subnet route-table association.
-- [ ] Run Terraform formatting and validation after reviewing the configuration.
-- [ ] Review Terraform plan.
-- [ ] Confirm GitHub contains the intended configuration.
+- [x] Verify private subnet configuration in the saved Terraform files.
+- [x] Verify private route table configuration.
+- [x] Verify private subnet route-table association.
+- [x] Confirm private networking resources exist in Terraform state.
+- [x] Verify deployed private networking resources through Terraform plan.
+- [x] Confirm Terraform plan reports no changes.
+- [x] Confirm remote Terraform configuration matches the verified local configuration.
 
-A NAT Gateway or private-subnet default internet route is not an established completed deliverable.
+### Verified AWS Resources
 
-Any proposed networking deployment must first include a cost assessment. No resources may be deployed without explicit approval.
+| Resource | AWS ID |
+|---|---|
+| Private subnet | `subnet-06b3eda3aa11274d0` |
+| Private route table | `rtb-099486899ca6e1192` |
+| Private route table association | `rtbassoc-089994e096fed516d` |
+
+### Verification Result
+
+Terraform plan executed successfully on November 26, 2026:
+
+> No changes. Your infrastructure matches the configuration.
+
+The private subnet has a dedicated route table without a default internet route. No NAT Gateway is configured.
+
+This architecture satisfies the current project networking and cost-control requirements.
+
+No infrastructure modifications were required during verification.
 
 ## Phase 5 — CI/CD and Infrastructure Validation
 
@@ -118,20 +135,24 @@ Avoid paid monitoring services unless explicitly approved.
 
 ## Phase 7 — Documentation
 
-**Status: In progress.**
+**Status: Initial documentation milestone completed November 26, 2026. Ongoing maintenance required.**
 
-Required documents:
+- [x] Create `PROJECT-BASELINE-2026-11-25.md`.
+- [x] Create `PROJECT-ROADMAP.md`.
+- [x] Create `PROJECT-OPERATIONS.md`.
+- [x] Commit and push all three documents to GitHub.
+- [x] Verify Markdown rendering on GitHub.
+- [x] Verify GitHub Actions passed for commit `18839ea`.
 
-- [x] `PROJECT-BASELINE-2026-11-25.md` — created locally November 26, 2026; GitHub publication pending.
-- [ ] `PROJECT-ROADMAP.md` — current document; save and verify locally.
-- [ ] `PROJECT-OPERATIONS.md` — operational procedures; not yet created.
+### Ongoing Documentation
 
-Also:
+- [ ] Maintain the README as the project evolves.
+- [ ] Update the roadmap after verified milestones.
+- [ ] Maintain operational and troubleshooting procedures.
+- [ ] Document security reviews and monitoring capabilities.
+- [ ] Keep documentation consistent with deployed infrastructure.
 
-- [ ] Review the existing `README.md`.
-- [ ] Ensure documentation accurately distinguishes completed, planned, and unverified work.
-- [ ] Commit and push the approved documentation.
-- [ ] Verify all three documents on GitHub.
+The baseline document remains a historical snapshot. The roadmap and operations guide are living documents.
 
 ## Phase 8 — Portfolio Review
 
@@ -161,20 +182,46 @@ Also:
 
 ## Current Checkpoint — November 26, 2026
 
-**Last confirmed work:**
+### Completed and Verified
 
-- Existing AWS infrastructure and CI/CD foundation completed.
-- Three intended documentation files were confirmed absent from the repository and available Git history.
-- `PROJECT-BASELINE-2026-11-25.md` was created locally and verified.
-- The baseline file is currently untracked.
-- No documentation commit or push has been performed.
+- [x] Created all three project documentation files.
+- [x] Committed and pushed documentation to GitHub.
+- [x] Verified documentation renders correctly on GitHub.
+- [x] Verified GitHub Actions passed for commit `18839ea`.
+- [x] Verified no Terraform state files appear in available Git history.
+- [x] Reviewed existing `.gitignore` configuration.
+- [x] Verified Terraform state, state backups, saved plan `tfplan`, and `.terraform/` ignore rules.
+- [x] Verified private subnet configuration.
+- [x] Verified private route table and subnet association.
+- [x] Verified private networking resources in Terraform state.
+- [x] Executed Terraform plan and confirmed no infrastructure changes.
+- [x] Confirmed local `terraform/main.tf` matches GitHub's `origin/master`.
 
-**Immediate next steps:**
+### Current Infrastructure Status
 
-1. Save and verify this roadmap as `PROJECT-ROADMAP.md`.
-2. Create and verify `PROJECT-OPERATIONS.md`.
-3. Review all three documents.
-4. Commit and push the approved documentation.
-5. Verify the documents on GitHub.
+- AWS region: `us-east-2`
+- EC2 instance: `i-01dfe8c2aafde46d4`
+- Last recorded EC2 operational state: Stopped.
+- Terraform state: 13 managed resources and one data source.
+- Terraform plan: No changes.
+- Private networking: Fully verified.
+- NAT Gateway: Not configured.
+- SSH: Not used.
+- AWS infrastructure modifications during this session: None.
 
-**AWS infrastructure changes are not part of the current documentation workflow.**
+### Outstanding Work
+
+- [ ] Review IAM `ec2:RunInstances` wildcard permissions.
+- [ ] Review security group outbound access requirements.
+- [ ] Review IAM user `ssm:DescribeInstanceInformation` permission issue.
+- [ ] Continue CI/CD improvements.
+- [ ] Develop monitoring and troubleshooting capabilities.
+- [ ] Continue portfolio documentation and presentation.
+
+### Exact Next Step
+
+Commit and push the updated project roadmap and verify the GitHub Actions result.
+
+Following successful publication, resume Phase 3 — IAM and Security, beginning with a read-only review of the `ec2:RunInstances` permissions.
+
+No AWS resource modifications are authorized at this checkpoint.
